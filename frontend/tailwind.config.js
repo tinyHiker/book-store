@@ -14,7 +14,8 @@ export default {
       },
       fontFamily: {
         'primary': ["Montserrat", "sans-serif"],
-        'secondary': ["Nunito Sans", "sans-serif"]
+        'secondary': ["Nunito Sans", "sans-serif"],
+        'cursive': ['"Allura"', 'cursive'], // Added Satisfy font
       }
     },
   },
