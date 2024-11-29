@@ -18,7 +18,7 @@ const navigation = [
 ]
 
 const Navbar = () => {
-    const currentUser = true;
+    const currentUser = false;
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     console.log(isDropdownOpen)
   return (
@@ -72,13 +72,9 @@ const Navbar = () => {
                                     </ul>
                                 </div>
                             )
-
-
-
-
                          }
                         </> :  
-                        <Link to="/cart" className="bg-primary p-1 sm:px-6 px-2 py-2 flex items-center rounded-sm">
+                        <Link to="/login" className="bg-primary p-1 sm:px-6 px-2 py-2 flex items-center rounded-sm">
                         <span className='text-xl font-semibold sm:ml-1'>Login </span>
                         <HiOutlineUser className="size-6"/>
                         </Link>
