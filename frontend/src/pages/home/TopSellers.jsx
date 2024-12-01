@@ -28,7 +28,7 @@ const TopSellers = () => {
     }, [])
 
     let filteredBooks = selectedCategory === "Choose a genre" ? books : books.filter(book => book.category === selectedCategory.toLowerCase())
-    console.log(filteredBooks)
+    
 
   return (
     <div className="py-10">

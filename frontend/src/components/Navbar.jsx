@@ -9,6 +9,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 
 import avatarImg from "../assets/avatar.png"
 import {useState} from "react";
+import {useSelector} from "react-redux";
 
 const navigation = [
     {name: "Dashboard", href: "/dashboard"},
@@ -20,12 +21,16 @@ const navigation = [
 const Navbar = () => {
     const currentUser = false;
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+    const cartItems = useSelector(state => state.cart.cartItems)
+    console.log(cartItems)
+
+    
+
     console.log(isDropdownOpen)
   return (
 
     <header className="max-w-screen-2xl mx-auto px-4 py-8">
         <nav className="flex justify-between items-center">
-
             {/*left side */}
             <div className="flex items-center md:gap-16 gap-4">
                 <Link to="/">
@@ -88,7 +93,10 @@ const Navbar = () => {
 
                 <Link to="/cart" className="bg-primary p-1 sm:px-6 px-2 py-2 flex items-center rounded-sm">
                     <HiOutlineShoppingCart className="size-6" />
-                    <span className='text-xl font-semibold sm:ml-1'>0</span>
+                    {
+                        cartItems.length > 0 ? <span className='text-xl font-semibold sm:ml-1'>{cartItems.length}</span> : <span className='text-xl font-semibold sm:ml-1'>0</span>
+                    }
+                    
                 </Link>
 
             </div>
