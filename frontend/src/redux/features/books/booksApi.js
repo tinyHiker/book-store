@@ -47,7 +47,7 @@ const booksApi = createApi({
                     'Content-Type': 'application/json'
                 }
             }),
-            invalidatesTags: ["Books"]   
+            invalidatesTags: ["Books"] 
         }),
         deleteBook: builder.mutation({
             query: (id) => ({

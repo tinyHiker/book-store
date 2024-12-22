@@ -3,6 +3,7 @@ import {auth} from "../firebase/firebase.config"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
 import {useEffect} from "react"
 
+
 const AuthContext = createContext();
 export const useAuth = () => {
     return useContext(AuthContext)
@@ -19,7 +20,6 @@ export const AuthProvide = ({children}) => {
 
     const registerUser = async (email, password) => {
         return await createUserWithEmailAndPassword(auth, email, password);
-
     }
 
     const loginUser = async (email, password) => {
@@ -52,6 +52,7 @@ export const AuthProvide = ({children}) => {
 
     const value = {
         currentUser,
+        loading,
         registerUser, 
         loginUser,
         signInWithGoogle,
