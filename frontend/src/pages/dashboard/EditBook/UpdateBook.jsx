@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
-import InputField from '../addBook/InputField'
-import SelectField from '../addBook/SelectField'
+import React, { useEffect } from 'react';
+import InputField from '../addBook/InputField';
+import SelectField from '../addBook/SelectField';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { useFetchBookByIdQuery, useUpdateBookMutation } from '../../../redux/features/books/booksApi';
+import { useFetchBookByIdQuery } from '../../../redux/features/books/booksApi';
 import Loading from '../../../components/Loading';
 import Swal from 'sweetalert2';
 import axios from 'axios';
@@ -12,9 +12,8 @@ import getBaseUrl from '../../../utils/baseURL';
 const UpdateBook = () => {
   const { id } = useParams();
   const { data: bookData, isLoading, isError, refetch } = useFetchBookByIdQuery(id);
-  // console.log(bookData)
-  const [updateBook] = useUpdateBookMutation();
-  const { register, handleSubmit, setValue, reset } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
+
   useEffect(() => {
     if (bookData) {
       setValue('title', bookData.title);
@@ -23,9 +22,9 @@ const UpdateBook = () => {
       setValue('trending', bookData.trending);
       setValue('oldPrice', bookData.oldPrice);
       setValue('newPrice', bookData.newPrice);
-      setValue('coverImage', bookData.coverImage)
+      setValue('coverImage', bookData.coverImage);
     }
-  }, [bookData, setValue])
+  }, [bookData, setValue]);
 
   const onSubmit = async (data) => {
     const updateBookData = {
@@ -37,35 +36,41 @@ const UpdateBook = () => {
       newPrice: Number(data.newPrice),
       coverImage: data.coverImage || bookData.coverImage,
     };
+
     try {
       await axios.put(`${getBaseUrl()}/api/books/edit/${id}`, updateBookData, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      })
-      Swal.fire({
-        title: "Book Updated",
-        text: "Your book is updated successfully!",
-        icon: "success",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, It's Okay!"
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       });
-      await refetch()
+      Swal.fire({
+        title: 'Book Updated',
+        text: 'Your book is updated successfully!',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: "Yes, It's Okay!",
+      });
+      await refetch();
     } catch (error) {
-      console.log("Failed to update book.");
-      alert("Failed to update book.");
+      console.log('Failed to update book.', error);
+      alert('Failed to update book.');
     }
-  }
-  if (isLoading) return <Loading />
-  if (isError) return <div>Error fetching book data</div>
-  return (
-    <div className="max-w-lg mx-auto md:p-6 p-3 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Update Book</h2>
+  };
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+  if (isLoading) return <Loading />;
+  if (isError) return <div className="text-red-500">Error fetching book data</div>;
+
+
+  return (
+    <div className=" max-w-2xl md:p-6 p-3 bg-white rounded-lg shadow-md border border-gray-100">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4 tracking-wide border-b pb-2">
+        Update Book
+      </h2>
+
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <InputField
           label="Title"
           name="title"
@@ -94,14 +99,17 @@ const UpdateBook = () => {
           ]}
           register={register}
         />
+
         <div className="mb-4">
-          <label className="inline-flex items-center">
+          <label className="inline-flex items-center cursor-pointer">
             <input
               type="checkbox"
               {...register('trending')}
               className="rounded text-blue-600 focus:ring focus:ring-offset-2 focus:ring-blue-500"
             />
-            <span className="ml-2 text-sm font-semibold text-gray-700">Trending</span>
+            <span className="ml-2 text-sm font-semibold text-gray-700">
+              Trending
+            </span>
           </label>
         </div>
 
@@ -129,12 +137,15 @@ const UpdateBook = () => {
           register={register}
         />
 
-        <button type="submit" className="w-full py-2 bg-blue-500 text-white font-bold rounded-md">
+        <button
+          type="submit"
+          className="w-full py-2 bg-blue-500 text-white font-semibold rounded-md shadow hover:bg-blue-600 hover:shadow-lg transition-colors"
+        >
           Update Book
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default UpdateBook
+export default UpdateBook;

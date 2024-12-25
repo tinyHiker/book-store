@@ -4,8 +4,15 @@ const Book = require('./book.model')
 
 const postABook = async (req,res) => {
     try{
+        console.log("REQUEST BODY")
+        console.log({...req.body})
+
         const newBook = await Book({...req.body});
         await newBook.save();
+
+        console.log("FINAL NEW BOOK")
+        console.log(newBook)
+        
         res.status(200).send({message: "Book posted successfully", book: newBook})
         return
 
