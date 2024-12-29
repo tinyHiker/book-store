@@ -5,12 +5,18 @@ const { postABook, getAllBooks, getSingleBook, UpdateBook, deleteABook } = requi
 const verifyAdminToken = require('../middleware/verifyAdminToken')
 //post a book
 
-router.post("/create-book", verifyAdminToken,postABook)
+// CORRECT FINAL VERSION WITH TOKEN VERIFICATION: router.post("/create-book", verifyAdminToken, postABook)
+router.post("/create-book", postABook)
+
 router.get("/", getAllBooks)
 router.get("/:id", getSingleBook)
 
-router.put("/edit/:id", verifyAdminToken, UpdateBook)
+//CORRECT FINAL VERSION: router.put("/edit/:id", verifyAdminToken, UpdateBook)
+router.put("/edit/:id", UpdateBook)
 
-router.delete("/:id", verifyAdminToken, deleteABook)
+
+//CORRECT FINAL VERSION: router.delete("/:id", verifyAdminToken, deleteABook)
+router.delete("/:id", deleteABook)
+
 
 module.exports = router

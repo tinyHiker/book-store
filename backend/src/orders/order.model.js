@@ -32,7 +32,14 @@ const orderSchema = new mongoose.Schema({
     totalPrice: {
         type: Number,
         required: true,
+    },
+    realUser: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'RealUser',
+        required: false,
     }
+    
+
 }, {
     timestamps: true,
 })
