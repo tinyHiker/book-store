@@ -16,6 +16,7 @@ import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks";
 import AddBook from "../pages/dashboard/addBook/AddBook";
 import UpdateBook from "../pages/dashboard/EditBook/UpdateBook";
 import UserProfile from "../userprofile/UserProfile";
+import AllQuotes from "../pages/other/AllQuotes";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
         {
           path: "/profile",
           element: <UserProfile />
+        },
+        {
+          path:"/quotes",
+          element: <AllQuotes />
         }
 
       ]

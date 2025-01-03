@@ -27,7 +27,7 @@ const SingleBook = () => {
         {/* Book Cover Image */}
         <div className="flex justify-center md:justify-start">
           <img
-            src={getImgUrl(book.coverImage)}
+            src={book.coverImage}
             alt={book.title}
             className="w-full h-auto object-cover rounded-md md:max-w-xs"
           />

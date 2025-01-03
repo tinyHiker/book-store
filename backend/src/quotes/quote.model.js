@@ -8,6 +8,10 @@ const quoteSchema = new mongoose.Schema({
   personOrOrganization: {
     type: String,
     required: true
+  },
+  bookTitle : {
+    type: String,
+    required: false
   }
 }, {
   timestamps: true
