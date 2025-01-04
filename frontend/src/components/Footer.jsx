@@ -1,15 +1,22 @@
-import React from 'react'
-import footerLogo from "../assets/footer-logo.png"
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa"
+import React from 'react';
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-10 px-4">
       {/* Top Section */}
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-        {/* Left Side - Logo and Nav */}
-        <div className="md:w-1/2 w-full">
-          <img src={footerLogo} alt="Logo" className="mb-5 w-36" />
+        {/* Left Side - Payment Icons */}
+        <div className="md:w-1/2 w-full flex flex-col items-center">
+          <div className="flex items-center justify-center mb-5">
+            <img src="/path-to/amex.png" alt="American Express" className="h-6 mx-2"/>
+            <img src="/path-to/apple-pay.png" alt="Apple Pay" className="h-6 mx-2"/>
+            <img src="/path-to/discover.png" alt="Discover" className="h-6 mx-2"/>
+            <img src="/path-to/google-pay.png" alt="Google Pay" className="h-6 mx-2"/>
+            <img src="/path-to/mastercard.png" alt="MasterCard" className="h-6 mx-2"/>
+            <img src="/path-to/shop-pay.png" alt="Shop Pay" className="h-6 mx-2"/>
+            <img src="/path-to/visa.png" alt="Visa" className="h-6 mx-2"/>
+          </div>
           <ul className="flex flex-col md:flex-row gap-4">
             <li><a href="#home" className="hover:text-primary">Home</a></li>
             <li><a href="#services" className="hover:text-primary">Services</a></li>
@@ -61,4 +68,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default Footer;
