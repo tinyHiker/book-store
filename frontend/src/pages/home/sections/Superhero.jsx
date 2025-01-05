@@ -60,7 +60,7 @@ const Superhero = () => {
 
 
       <div className="mt-8 flex justify-center">
-        <Link to="/books/all" className="bg-yellow border-2 border-black hover:border-transparent hover:bg-black hover:text-white text-black font-bold py-2 px-4 rounded transition-all duration-150">
+        <Link to="/categories/superhero" className="bg-yellow border-2 border-black hover:border-transparent hover:bg-black hover:text-white text-black font-bold py-2 px-4 rounded transition-all duration-150">
         View All
         </Link>
         </div>

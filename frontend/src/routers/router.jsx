@@ -15,8 +15,9 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks";
 import AddBook from "../pages/dashboard/addBook/AddBook";
 import UpdateBook from "../pages/dashboard/EditBook/UpdateBook";
-import UserProfile from "../userprofile/UserProfile";
+import UserProfile from "../components/UserProfile";
 import AllQuotes from "../pages/other/AllQuotes";
+import GenreCollection from "../pages/genres/GenreCollection";
 
 const router = createBrowserRouter([
     {
@@ -83,8 +84,9 @@ const router = createBrowserRouter([
         },
         {
             path: ":genre",
-            element: <div>GENRE BASED COLLECTION</div>
-        }
+            element: <GenreCollection />
+        },
+        
       ]
     },
     {
