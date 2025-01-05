@@ -12,21 +12,28 @@ import { useFetchBookByIdQuery } from '../../redux/features/books/booksApi'
 import { useFetchQuoteByIdQuery } from '../../redux/features/quotes/quotesApi'
 import Quote from './sections/Quote'
 import CategoriesGrid from './sections/CategoriesGrid'
+import HeroBanner from './HeroBanner'
+import useScrollToAnchor from "../../utils/useScrollToAnchor.js"
 
 const Home = () => {
+  useScrollToAnchor()
 
   let {data: book = {}} = useFetchBookByIdQuery('6771ac46474d85e3cecaac15')
   let {data: book2 = {}} = useFetchBookByIdQuery('6771ac46474d85e3cecaac0f')
 
   let {data: quote1 = {}} = useFetchQuoteByIdQuery("67735940474d85e3cecad14a")
   let {data: quote2 = {}} = useFetchQuoteByIdQuery("6779651b474d85e3cecb4c97")
-  console.log(quote1)
 
-  console.log(book)
+
+  
+
+  
   return (
     <>
+    <HeroBanner />
     <Banner />
     <Quote quote={quote1}/>
+    <div id="first-redirect"></div>
     <TopSellers/>
     <Fantasy />
     <BookTransitionCard book={book2} />

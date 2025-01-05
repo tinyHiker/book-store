@@ -32,6 +32,7 @@ const router = createBrowserRouter([
             element: <PrivateRoute><OrderPage/></PrivateRoute>
             
         },
+        
         {
             path: "/about",
             element: <div>About</div>
@@ -71,6 +72,20 @@ const router = createBrowserRouter([
     {
       path: "/admin",
       element: <AdminLogin />
+    },
+    {
+      path: "/categories",
+      element: <App />,
+      children: [
+        {
+          path: "authors/:id",
+          element: <div>AUTHOR COLLECTION</div>
+        },
+        {
+            path: ":genre",
+            element: <div>GENRE BASED COLLECTION</div>
+        }
+      ]
     },
     {
       path: "/dashboard",
