@@ -29,7 +29,7 @@ const TopSellers = () => {
   return (
     <div className="py-10">
 
-<h2 className="text-3xl font-semibold mb-1 ml-9 text-center">Top Sellers</h2>
+<h2 className="text-3xl font-semibold mb-1 ml-9 text-center">Our Collection</h2>
         {/* category filtering */}
         <div className="mb-8 flex items-center">
             <select onChange={(e) => setSelectedCategory(e.target.value)} name="category" id="category" className="border bg-[#EAEAEA] border-gray-300 rounded-md px-4 py-2 focus:outline-none" >

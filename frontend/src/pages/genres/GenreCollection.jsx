@@ -20,6 +20,8 @@ const GenreCollection = () => {
     return <option value={category.route}>{category.name}</option>;
   });
 
+  console.log(genre)
+
   
 
   return (
@@ -49,7 +51,7 @@ const GenreCollection = () => {
 
         <div className="grid grid-cols-3 gap-7">
           {filteredBooks.map((book) => (
-            <div key={book._id} className="bg-white shadow-md rounded-lg overflow-hidden hover:scale-105">
+            <div key={book._id} className="bg-white shadow-md rounded-lg overflow-hidden hover:scale-105" onClick={() => { navigate(`/books/${book._id}`)}}>
               <img
                 src={book.coverImage}
                 alt={book.title}
