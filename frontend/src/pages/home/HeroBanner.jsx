@@ -41,7 +41,7 @@ const HeroBanner = () => {
       
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white px-4">
-        <h1 className="text-5xl font-bold mb-6">Fantastical Books</h1>
+        <h1 className="text-5xl font-bold mb-6">Harrenhall Bookstore</h1>
         <p className="text-xl mb-8 max-w-lg">Explore the greatest hits in Fantasy and Speculative Fiction</p>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded" onClick={handleClick}>Have a look around!</button>
       </div>

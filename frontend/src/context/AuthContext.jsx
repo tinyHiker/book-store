@@ -9,12 +9,11 @@ export const useAuth = () => {
     return useContext(AuthContext)
 }
 
-async function registerUserToMongo(email, uid) {
+async function registerUserToMongo(username, email, uid) {
     let res = await fetch(`${getBaseUrl()}/api/real-users/create-real-user`, {
         method: "POST",
         body: JSON.stringify({
-            email: email, uid: uid
-
+            email: email, uid: uid, username: username
         }),
         headers: {
             "Content-type": "application/json"
@@ -32,7 +31,7 @@ export const AuthProvide = ({children}) => {
     const [currentUser, setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true);
 
-    const registerUser = async (email, password) => {
+    const registerUser = async (username, email, password) => {
         try {
             let response = await createUserWithEmailAndPassword(auth, email, password);
             let user = response.user
@@ -42,7 +41,7 @@ export const AuthProvide = ({children}) => {
             console.log(user.email)
             console.log(user.uid)
 
-            await registerUserToMongo(user.email, user.uid)
+            await registerUserToMongo(username, user.email, user.uid)
             return response
         } catch (error) {
             console.log(error)
@@ -62,8 +61,9 @@ export const AuthProvide = ({children}) => {
 
             //console.log(user.displayName)
             //console.log(user.photoURL)
+            let username = user.email.split('@')[0];
 
-            await registerUserToMongo(user.email, user.uid)
+            await registerUserToMongo(username, user.email, user.uid)
             return response
         } catch (error) {
             console.log(error)

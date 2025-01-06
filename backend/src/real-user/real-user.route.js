@@ -7,14 +7,14 @@ const RealUser = require('./real-user.model')
 
 router.post("/create-real-user", async (req, res) => {
     try {
-        const {email, uid} = req.body;
+        const {email, uid, username} = req.body;
         const realUserFound = await RealUser.findOne({uid})
 
         if(realUserFound) {
             return res.status(422).json({error: "RealUser already exists"})
         } else {
             const newRealUser = new RealUser({
-                uid, email
+                uid, email, name: username
             })
             const registerUser = await newRealUser.save()
             res.status(201).json({message: "RealUser registered successfully", newRealUser: newRealUser})

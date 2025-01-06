@@ -11,6 +11,7 @@ import avatarImg from "../assets/avatar.png"
 import {useState} from "react";
 import {useSelector} from "react-redux";
 import { useAuth } from '../context/AuthContext';
+import { GiAcorn } from "react-icons/gi";
 
 const navigation = [
     {name: "Dashboard", href: "/dashboard"},
@@ -40,9 +41,7 @@ const Navbar = () => {
         <nav className="flex justify-between items-center">
             {/*left side */}
             <div className="flex items-center md:gap-16 gap-4">
-                <Link to="/">
-                <HiMiniBars3CenterLeft className="size-6" size={32} />
-                </Link>
+                
 
                 <div className="relative sm:w-72 w-40 space-x-2">
                     <IoSearchOutline className="absolute inline-block left-3 inset-y-2"/>
@@ -50,10 +49,11 @@ const Navbar = () => {
                 </div>
             </div>
 
-
-            <button className="p-1 sm:px-6 px-10 tex-center rounded-lg w-64">
-            <h1 className='font-cursive text-5xl text-center w-full'> Bookly</h1>
-            </button>
+            
+            <Link to="/" className="w-64 p-1 sm:px-6 px-10 rounded-lg flex items-center justify-center">
+            <span className="font-cursive text-5xl">Harrenhall</span>
+            <GiAcorn size="50px" className=" ml-3  inline-block" />
+            </Link>
 
 
 
@@ -83,16 +83,20 @@ const Navbar = () => {
                                         }
                                     </ul>
                                     <li>
-                                        <button onClick={handleLogOut} className='block w-full px-4 py-2 text-sm hover:bg-gray-200'>Logout</button>
+                                        <button onClick={handleLogOut} className='block w-full px-4 py-1 text-sm hover:bg-gray-200 hover:scale-105'>Logout</button>
                                     </li>
                                 </div>
                             )
                          }
                         </> :  
-                        <Link to="/login" className="bg-primary p-1 sm:px-6 px-2 py-2 flex items-center rounded-sm">
-                        <span className='text-xl font-semibold sm:ml-1'>Login </span>
+                        <>
+                        
+                        <Link to="/login" className="bg-primary sm:px-6 px-1 py-2 flex items-center rounded-sm hover:scale-105">
+                        <span className='text-xl font-semibold sm:ml-1'>Login  </span>
                         <HiOutlineUser className="size-6"/>
                         </Link>
+                        </>
+                        
                         /*< Link to="/login"><HiOutlineUser className="size-8"/></Link>*/
                     }
                 </div>
@@ -101,7 +105,7 @@ const Navbar = () => {
                     <HiOutlineHeart className="size-8"/>
                 </button>
 
-                <Link to="/cart" className="bg-primary p-1 sm:px-6 px-2 py-2 flex items-center rounded-sm">
+                <Link to="/cart" className="bg-primary p-1 sm:px-6 px-2 py-2 flex items-center rounded-sm hover:scale-105">
                     <HiOutlineShoppingCart className="size-6" />
                     {
                         cartItems.length > 0 ? <span className='text-xl font-semibold sm:ml-1'>{cartItems.length}</span> : <span className='text-xl font-semibold sm:ml-1'>0</span>
