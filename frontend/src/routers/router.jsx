@@ -18,6 +18,7 @@ import UpdateBook from "../pages/dashboard/EditBook/UpdateBook";
 import UserProfile from "../components/UserProfile";
 import AllQuotes from "../pages/other/AllQuotes";
 import GenreCollection from "../pages/genres/GenreCollection";
+import Collection from "../pages/genres/Collection";
 
 const router = createBrowserRouter([
     {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       path: "/categories",
       element: <App />,
       children: [
+        {
+          path: "none",
+          element: <Collection />
+        },
         {
           path: "authors/:id",
           element: <div>AUTHOR COLLECTION</div>

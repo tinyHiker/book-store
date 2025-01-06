@@ -10,11 +10,12 @@ import { Pagination, Navigation } from 'swiper/modules';
 
 import 'swiper/css/navigation';
 import { useFetchAllBooksQuery } from '../../redux/features/books/booksApi';
+import { Link } from 'react-router-dom';
 
 
 
 
-const categories = ["Choose a genre", "Fantasy", "Science Fiction", "Historical Fantasy", "Superhero", "Dystopian Fantasy", "Mystery", "Thriller", "Horror"]
+const categories = ["Choose a genre", "Fantasy", "Science Fiction", "Superhero", "Dystopian Fantasy", "Mystery", "Thriller", "Horror"]
 
 const TopSellers = () => {
     
@@ -81,6 +82,12 @@ const TopSellers = () => {
         
         
       </Swiper>
+
+      <div className="mt-8 flex justify-center">
+        <Link to="/categories/none" className="bg-yellow border-2 border-black hover:border-transparent hover:bg-black hover:text-white text-black font-bold py-2 px-4 rounded transition-all duration-150">
+        View All
+        </Link>
+        </div>
 
        
 

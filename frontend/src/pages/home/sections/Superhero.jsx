@@ -20,7 +20,7 @@ const Superhero = () => {
 
   return (
     <div className="py-10">
-        <h2 className="text-3xl font-semibold mb-9 text-center">Superhero</h2>
+        <h2 className="text-3xl font-semibold mb-7 text-center">Superhero</h2>
 
         <Swiper
         slidesPerView={1}

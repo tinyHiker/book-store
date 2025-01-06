@@ -19,7 +19,7 @@ const BookTransitionCard = ({ book }) => {
 
       <div className="flex flex-col justify-center">
         <div>
-          <h1 className="text-2xl font-bold mb-2 hover:underline hover:text-blue-500"   onClick = {() => { navigate(`/books/${book._id}`)}}>{book.title}</h1>
+          <h1 className="text-2xl font-bold mb-2 hover:underline hover:text-blue-500 hover:scale-105"   onClick = {() => { navigate(`/books/${book._id}`)}}>{book.title}</h1>
           <p className="text-lg text-gray-700 mb-2">Paperback by {book.author}</p>
           <div className="text-xl font-bold mb-2">
             <span className="text-red-600 line-through mr-2">${book.oldPrice}</span>
@@ -30,8 +30,8 @@ const BookTransitionCard = ({ book }) => {
 
         <div>
           <div className="flex gap-4 mb-4">
-            <button className="bg-black text-white px-4 py-2 rounded hover:bg-gray-900"  onClick={() => handleAddToCart(book)}>Add to Cart</button>
-            <button className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-black" onClick = {() => { navigate(`/categories/${book.category.replace(" ", "-")}`)}}>View Related Books</button>
+            <button className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-black hover:scale-105"  onClick={() => handleAddToCart(book)}>Add to Cart</button>
+            <button className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-black hover:scale-105" onClick = {() => { navigate(`/categories/${book.category.replace(" ", "-")}`)}}>View Related Books</button>
           </div>
           <Link to={`/books/${book._id}`} className="text-blue-500 hover:text-black hover:underline">Full details →</Link>
         </div>

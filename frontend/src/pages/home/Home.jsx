@@ -33,9 +33,11 @@ const Home = () => {
     <HeroBanner />
     <Banner />
     <Quote quote={quote1}/>
-    <div id="first-redirect"></div>
+    
     <TopSellers/>
+    <div id="first-redirect"></div>
     <Fantasy />
+    
     <BookTransitionCard book={book2} />
     <Superhero />
     <BookTransitionCard book={book} />

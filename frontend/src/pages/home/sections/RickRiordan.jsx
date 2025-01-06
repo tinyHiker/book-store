@@ -22,7 +22,7 @@ const RickRiordan = () => {
 
     return (
         <div className="py-10">
-            <h2 className="text-3xl font-semibold mb-9 text-center">Rick Riordan - Fantasies of False Gods</h2>
+            <h2 className="text-3xl font-semibold mb-7 text-center">Rick Riordan - Fantasies of False Gods</h2>
 
             <Swiper
                 slidesPerView={1}
@@ -58,11 +58,7 @@ const RickRiordan = () => {
 
             
 
-        <div className="mt-8 flex justify-center">
-        <Link to="/books/all" className="bg-yellow border-2 border-black hover:border-transparent hover:bg-black hover:text-white text-black font-bold py-2 px-4 rounded transition-all duration-150">
-        View All
-        </Link>
-        </div>
+        
 
 
         </div>

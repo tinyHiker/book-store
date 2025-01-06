@@ -6,22 +6,20 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 
-const GenreCollection = () => {
-  let { genre } = useParams();
-  let mod_genre = genre.toLowerCase().replace("-", " ")
-  const { data: books = [] } = useFetchAllBooksQuery();
-  const filteredBooks = books.filter((book) => book.category === mod_genre );
+const Collection = () => {
+  
+  
+  const { data: filteredBooks = [] } = useFetchAllBooksQuery();
+  
   let navigate = useNavigate()
   
   
-  const [categoryFilter, setCategoryFilter] = useState('');
+  
  
 
-  let category_options = categories.map(category => {
-    return <option value={category.route}>{category.name}</option>;
-  });
+  
 
-  console.log(genre)
+  
 
   
 
@@ -30,23 +28,9 @@ const GenreCollection = () => {
       <div className="mx-auto max-w-4xl p-6">
         {/* Genre Title and Filtering */}
         <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold">{genre[0].toUpperCase() + genre.substring(1).toLowerCase()}</h1>
+            <h1 className="text-3xl font-bold">Our Entire Collection</h1>
           <hr className="my-2" />
-          <div className="flex justify-center gap-4 items-center">
-            <label>Other genres:</label>
-            <select 
-              value={categoryFilter} 
-              onChange={(e) => {
-                setCategoryFilter(e.target.value)
-                navigate(`/categories/${e.target.value}`)
-            }} 
-              className="border border-gray-300 rounded p-2">
-
-              {category_options}
-            </select>
-            <Link to={`/categories/none`} className="text-blue-500 hover:text-black hover:underline mt-3">View All Books →</Link>
-          </div>
-
+          <Link to={`/categories/fantasy`} className="text-blue-500 hover:text-black hover:underline mt-6">Fantasy Category →</Link>
           
         </div>
 
@@ -80,6 +64,4 @@ const GenreCollection = () => {
   );
 };
 
-export default GenreCollection;
-
-
+export default Collection;
