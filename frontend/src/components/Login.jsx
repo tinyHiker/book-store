@@ -1,88 +1,126 @@
-import {React, useState} from 'react'
-import {Link} from 'react-router-dom'
-import { FaGoogle } from "react-icons/fa";
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { FaGoogle, FaUserCircle } from "react-icons/fa"
 import { useForm } from "react-hook-form"
-import { useAuth } from '../context/AuthContext';
-import {useNavigate} from "react-router-dom"
-
-
+import { useAuth } from '../context/AuthContext'
 
 const Login = () => {
-    const [message, setMessage] = useState("");
-    const {loginUser, signInWithGoogle} = useAuth();
-    const navigate = useNavigate()
-    
+  const [message, setMessage] = useState("")
+  const { loginUser, signInWithGoogle } = useAuth()
+  const navigate = useNavigate()
 
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-      } = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
 
-      const onSubmit = async (data) => {
-        try {
-            await loginUser(data.email, data.password);
-            alert("Login successful!");
-            navigate("/")
-        } catch (error) {
-            setMessage("Please provide a valid email and password")
-            console.error(error)
-        }
-        
-      }
+  const onSubmit = async (data) => {
+    try {
+      await loginUser(data.email, data.password)
+      alert("Login successful!")
+      navigate("/")
+    } catch (error) {
+      setMessage("Please provide a valid email and password")
+      console.error(error)
+    }
+  }
 
-      const handleGoogleSignIn = async () => {
-        try{
-            await signInWithGoogle()
-            
-            navigate("/")
-            alert("Login successful with Google!")
-
-        } catch(error) {
-            alert("Google sign in failed!")
-            console.error(error)
-
-        }
-      }
-
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle()
+      alert("Login successful with Google!")
+      navigate("/")
+    } catch (error) {
+      alert("Google sign in failed!")
+      console.error(error)
+    }
+  }
 
   return (
-    <div className='h-[calc(100vh-120px)] flex justify-center items-center'>
-        <div className="w-full max-w-sm mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h2 className="text-ul font-semibold mb-4">Please Login</h2>
-
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='mb-4'>
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
-                    <input {...register("email", { required: true })} type="email" name="email" id="email" placeholder="Email Address" className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow"/>
-                </div>
-
-                <div className='mb-4'>
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password</label>
-                    <input {...register("password", { required: true })} type="password" name="password" id="password" placeholder="Password" className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow"/>
-                </div>
-                {
-                    message && <p className="text-red-500 text-xs italic mb-3">{message}</p>
-                }
-                <div >
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded focus:outline-none">Login</button>
-
-                </div>
-            </form>
-            <p className='align-baseline font-medium mt-4 text-sm'>Don't have an account? You have to <Link to="/register" className="text-blue-500">Register</Link></p>
-            {/* google sign in */}
-            <div className="mt-4">
-                <button onClick={handleGoogleSignIn} className="w-full flex flex-wrap gap-1 items-center justify-center bg-secondary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none">
-                    <FaGoogle className="mr-2"/>
-                    Sign in with Google
-
-                </button>
-            </div>
-        
+    <div className="flex items-center justify-center px-4 mt-20">
+      <div className="relative max-w-sm w-full bg-slate-100 rounded-lg shadow-xl p-6">
+        <div className="absolute -top-12 left-1/2 -translate-x-1/2">
+          <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-md">
+            <FaUserCircle className="text-5xl text-gray-500" />
+          </div>
         </div>
+        <h2 className="text-xl font-bold mb-6 text-center font-secondary mt-10">
+          Please Login
+        </h2>
+        {message && (
+          <div className="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+            {message}
+          </div>
+        )}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 font-semibold mb-1"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              {...register("email", { required: true })}
+              type="email"
+              id="email"
+              placeholder="Email Address"
+              className="block w-full rounded-lg border border-gray-300 px-3 py-2 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                Email is required
+              </p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 font-semibold mb-1"
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <input
+              {...register("password", { required: true })}
+              type="password"
+              id="password"
+              placeholder="Password"
+              className="block w-full rounded-lg border border-gray-300 px-3 py-2 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                Password is required
+              </p>
+            )}
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none  focus:ring-2 focus:ring-blue-400 transition-colors duration-300"
+          >
+            Login
+          </button>
+        </form>
+        <p className="text-center font-medium mt-4 text-sm">
+          Don't have an account?{" "}
+          <Link to="/register" className="text-blue-500 hover:underline">
+            Register
+          </Link>
+        </p>
+        <div className="mt-4">
+          <button
+            onClick={handleGoogleSignIn}
+            className="w-full flex justify-center items-center gap-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-colors duration-300"
+          >
+            <FaGoogle />
+            Sign in with Google
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
 
 export default Login
+
+

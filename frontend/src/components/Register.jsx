@@ -68,7 +68,7 @@ const Register = () => {
               type="text"
               id="username"
               placeholder="Username"
-              className="block w-full rounded-md border border-gray-300 px-3 py-2 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="block w-full rounded-lg border border-gray-300 px-3 py-2 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
             {errors.username && (
               <p className="text-red-500 text-sm mt-1">
@@ -90,7 +90,7 @@ const Register = () => {
               type="email"
               id="email"
               placeholder="Email Address"
-              className="block w-full rounded-md border border-gray-300 px-3 py-2 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="block w-full rounded-lg border border-gray-300 px-3 py-2 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1">
@@ -118,7 +118,7 @@ const Register = () => {
               type="password"
               id="password"
               placeholder="Password"
-              className="block w-full rounded-md border border-gray-300 px-3 py-2 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="block w-full rounded-lg border border-gray-300 px-3 py-2 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
             {errors.password && (
               <p className="text-red-500 text-sm mt-1">
@@ -144,7 +144,7 @@ const Register = () => {
               type="password"
               id="confirmPassword"
               placeholder="Confirm Password"
-              className="block w-full rounded-md border border-gray-300 px-3 py-2 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="block w-full rounded-lg border border-gray-300 px-3 py-2 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
             {errors.confirmPassword && (
               <p className="text-red-500 text-sm mt-1">
@@ -156,7 +156,7 @@ const Register = () => {
           
           <button
             type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors duration-300"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors duration-300"
           >
             Register
           </button>
@@ -173,7 +173,7 @@ const Register = () => {
         <div className="mt-4">
           <button
             onClick={handleGoogleSignIn}
-            className="w-full flex justify-center items-center gap-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400 transition-colors duration-300"
+            className="w-full flex justify-center items-center gap-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition-colors duration-300"
           >
             <FaGoogle />
             Register with Google
