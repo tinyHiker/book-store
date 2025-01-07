@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
 import { getImgUrl } from '../../utils/getImgUrl';
 import {removeFromCart, clearCart} from "../../redux/features/cart/cartSlice";
@@ -7,6 +7,7 @@ import {removeFromCart, clearCart} from "../../redux/features/cart/cartSlice";
 const CartPage = () => {
     const cartItems = useSelector(state => state.cart.cartItems);
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const totalPrice = cartItems.reduce((acc, item) => acc + item.newPrice, 0).toFixed(2)
 
@@ -43,23 +44,25 @@ const CartPage = () => {
                     {
                         cartItems.map((product) => (
                             <li  key ={product?._id} className="flex py-6">
-                      <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                      <div className="h-36 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <img
                           alt=""
-                          src={`${getImgUrl(product?.coverImage)}`}
-                          className="h-full w-full object-cover object-center"
+                          src={`${product?.coverImage}`}
+                          className="h-36 w-24 object-cover object-center hover:scale-105"
+                          onClick = {() => { navigate(`/books/${product?._id}`)}}
                         />
                       </div>
     
                       <div className="ml-4 flex flex-1 flex-col">
                         <div>
                           <div className="flex flex-wrap justify-between text-base font-medium text-gray-900">
-                            <h3>
-                              <Link to='/'>{product?.title}</Link>
+                            <h3 className='hover:text-blue-500'>
+                              <Link to={`/books/${product?._id}`}>{product?.title}</Link>
                             </h3>
                             <p className="sm:ml-4">${product?.newPrice}</p>
                           </div>
                           <p className="mt-1 text-sm text-gray-500 capitalize"><strong>Category: </strong>{product?.category}</p>
+                          <p className="mt-1 text-sm text-gray-500 capitalize  w-100"><strong>Preview </strong>{product?.description}</p>
                         </div>
                         <div className="flex flex-1 flex-wrap items-end justify-between space-y-2 text-sm">
                           <p className="text-gray-500"><strong>Qty:</strong> 1</p>
