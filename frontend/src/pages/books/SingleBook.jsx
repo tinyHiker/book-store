@@ -10,7 +10,11 @@ import { addToCart } from '../../redux/features/cart/cartSlice';
 import { useFetchBookByIdQuery } from '../../redux/features/books/booksApi';
 import { Link } from 'react-router-dom';
 import Quote from '../home/sections/Quote';
+import useScrollToAnchor from "../../utils/useScrollToAnchor.js"
+
+
 const SingleBook =  () => {
+  useScrollToAnchor()
   const { id } = useParams();
   const { data: book, isLoading, isError } = useFetchBookByIdQuery(id);
   const navigate = useNavigate()
@@ -33,7 +37,7 @@ const SingleBook =  () => {
   
   console.log(book)
   let authors_text = book.authors.map(author => {
-    return <Link to={`/authors/${author._id}`}><span className="text-blue-600">{author.fullName}</span></Link>
+    return <Link to={`#author-redirect`}><span className="text-blue-600">{author.fullName}</span></Link>
   })
 
   let quotes_text = book.quotes.map(quote => {
@@ -143,6 +147,7 @@ const SingleBook =  () => {
 
 
   <h2 className="text-2xl font-semibold mb-1 text-center">ABOUT THE AUTHOR</h2>
+  <span id="author-redirect"></span>
   {authors_descriptions}
 
 
