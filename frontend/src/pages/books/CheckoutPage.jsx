@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux'
 import { clearCart } from '../../redux/features/cart/cartSlice'
 
 
+
 const CheckoutPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems)
   const totalPrice = cartItems
@@ -16,6 +17,8 @@ const CheckoutPage = () => {
     .toFixed(2)
 
   const { currentUser } = useAuth()
+  console.log(currentUser)
+
 
   const dispatch = useDispatch()
 
@@ -40,17 +43,21 @@ const CheckoutPage = () => {
 
   const submitOrder = async (data) => {
     const newOrder = {
-      name: data.name,
-      email: currentUser?.email,
-      address: {
-        city: data.city,
-        country: data.country,
-        state: data.state,
-        zipcode: data.zipcode,
-      },
-      phone: data.phone,
-      productIds: cartItems.map((item) => item?._id),
-      totalPrice: totalPrice,
+      userUid: currentUser.uid,
+      content: {
+        name: data.name,
+        email: currentUser?.email,
+        address: {
+          city: data.city,
+          country: data.country,
+          state: data.state,
+          zipcode: data.zipcode,
+        },
+        phone: data.phone,
+        productIds: cartItems.map((item) => item?._id),
+        totalPrice: totalPrice,
+      }
+      
     }
 
     try {
@@ -64,12 +71,14 @@ const CheckoutPage = () => {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Ok',
       })
+      console.log(currentUser.uid)
       navigate('/orders')
     } catch (error) {
       console.error('Error creating an order', error)
       alert('Failed to place the order')
     }
   }
+
 
   // Wrap the submission with custom logic to check if T&C is accepted
   const handleFormSubmit = (data) => {
@@ -80,6 +89,7 @@ const CheckoutPage = () => {
     setTermsError(false)
     submitOrder(data)
   }
+
 
   // Build the cart list display
   let cartList = cartItems.map((item) => {
