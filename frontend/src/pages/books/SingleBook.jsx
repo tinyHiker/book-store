@@ -61,7 +61,7 @@ const SingleBook =  () => {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white  rounded-md  border-gray-200">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-        {/* Book Cover Image */}
+        
         <div className="flex justify-center md:justify-start">
           <img
             src={book.coverImage}
@@ -70,7 +70,7 @@ const SingleBook =  () => {
           />
         </div>
 
-        {/* Book Info */}
+        
         <div className='mt-11'>
           <h1 className="text-xl text-gray-800 mb-2 text-center">
             <div className="mb-5 font-bold text-4xl">{book.title}</div> - Written by {authors_text[0]}
@@ -89,20 +89,20 @@ const SingleBook =  () => {
           </div>
           
           <div className="mb-7 mt-4">
-            {/* Conditional text color: red if stock < 20, else green */}
+            
             <span className={`text-sm ${book.stock < 20 ? 'text-red-600' : 'text-green-600'}`}>
               {book.stock} left in stock.
             </span>
               
-            {/* Custom progress bar container */}
+            
             <div className="w-full bg-gray-200 h-2 mt-1 rounded-full overflow-hidden">
-              {/* Filled portion; width is a dynamic percentage of the stock */}
+              
               <div className="bg-yellow-400 h-full" style={{ width: `${(book.stock / 150) * 100}%` }} />
             </div>
           </div>
 
 
-          {/* Add to Cart and Wishlist Buttons */}
+          
           <div className="flex gap-4 mb-4">
             <button
               onClick={() => handleAddToCart(book)}
@@ -117,7 +117,7 @@ const SingleBook =  () => {
               <span>View Related Books</span>
             </button>
           </div>
-          {/* Preview */}
+       
           <div className=" font-secondary mt-7 w-200">
             <p className="text-md text-gray-700"><span className= "font-bold">Preview: </span>{book.description}</p>
           </div>

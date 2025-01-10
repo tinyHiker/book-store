@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import BookCard from '../books/BookCard'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -31,7 +30,7 @@ const TopSellers = () => {
     <div className="py-10">
 
 <Link to="categories/none"><h2 className="text-3xl font-semibold mb-1 text-center hover:text-gray-600 hover:scale-95 ">Our Collection</h2></Link>
-        {/* category filtering */}
+       
         <div className="mb-8 flex items-center">
             <select onChange={(e) => setSelectedCategory(e.target.value)} name="category" id="category" className="border bg-[#EAEAEA] border-gray-300 rounded-md px-4 py-2 focus:outline-none" >
                 {

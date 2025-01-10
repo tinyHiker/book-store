@@ -26,7 +26,7 @@ const Collection = () => {
   return (
     <>
       <div className="mx-auto max-w-4xl p-6">
-        {/* Genre Title and Filtering */}
+        
         <div className="text-center mb-8">
             <h1 className="text-3xl font-bold">Our Entire Collection</h1>
           <hr className="my-2" />

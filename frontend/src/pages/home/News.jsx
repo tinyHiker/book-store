@@ -8,12 +8,11 @@ import news4 from "../../assets/news/news-4.png"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-// import required modules
+
 import { Pagination, Navigation } from 'swiper/modules';
 
 const news = [
@@ -80,7 +79,7 @@ const News = () => {
             news.map((item, index) => (
                 <SwiperSlide key={index}>
                     <div className="flex flex-col sm:flex-row sm:justify-between items-center">
-                        {/* content */}
+                        
                         <div className='py-4'>
                             <Link to="/">
                             <h3 className="text-lg font-medium hover:text-blue-600 mb-4">{item.title}</h3>

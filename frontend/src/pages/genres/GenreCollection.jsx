@@ -28,7 +28,7 @@ const GenreCollection = () => {
   return (
     <>
       <div className="mx-auto max-w-4xl p-6">
-        {/* Genre Title and Filtering */}
+       
         <div className="text-center mb-8">
             <h1 className="text-3xl font-bold">{genre[0].toUpperCase() + genre.substring(1).toLowerCase()}</h1>
           <hr className="my-2" />

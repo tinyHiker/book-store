@@ -9,9 +9,9 @@ import visaLogo from "../../public/payment-icons/visa.svg"
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-12 px-4">
-      {/* Top Section */}
+      
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10 md:gap-8">
-        {/* Left Side - Payment Icons & Nav Links */}
+       
         <div className="md:w-1/2 w-full flex flex-col gap-6">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
             <img src="../../public/payment-icons/amex.png" alt="Amex" className="h-8"/>
@@ -57,7 +57,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Right Side - Newsletter */}
+        
         <div className="md:w-1/2 w-full flex flex-col gap-4">
           <p className="text-sm lg:text-base">
             Subscribe to our newsletter to receive the latest updates, news, and offers!
@@ -75,9 +75,9 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Section */}
+      
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center mt-10 border-t border-gray-700 pt-6 gap-6">
-        {/* Left Side - Privacy Links */}
+        
         <ul className="flex gap-6 text-sm lg:text-base">
           <li>
             <a
@@ -97,7 +97,7 @@ const Footer = () => {
           </li>
         </ul>
 
-        {/* Right Side - Social Icons */}
+        
         <div className="flex gap-6 text-white">
           <a
             href="https://facebook.com"

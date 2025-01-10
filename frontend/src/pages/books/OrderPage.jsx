@@ -86,7 +86,7 @@ const OrderPage = () => {
         ) : (
           <div className="space-y-10">
             {orders.map((order, index) => {
-              // Limit displayed Books to first 3
+              
               const displayedBooks = order.productIds.slice(0, 3);
               const remainingCount = order.productIds.length - 3;
 
@@ -95,9 +95,9 @@ const OrderPage = () => {
                   key={order._id}
                   className="bg-white shadow-xl rounded-2xl p-6 hover:shadow-2xl transition-shadow duration-300 ease-in-out"
                 >
-                  {/* Top Section: Mimicking Amazon Layout */}
+                
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 space-y-4 sm:space-y-0">
-                    {/* Left Side: ORDER PLACED / TOTAL / SHIP TO */}
+                    
                     <div className="flex flex-wrap gap-6">
                       <div>
                         <h4 className="text-sm text-gray-500 uppercase font-semibold">
@@ -122,12 +122,12 @@ const OrderPage = () => {
                           Ship To
                         </h4>
                         <p className="text-sm text-gray-700">
-                          {order.name} {/* or any shipping name */}
+                          {order.name} 
                         </p>
                       </div>
                     </div>
 
-                    {/* Right Side: ORDER #, "View order details", "Invoice" */}
+                
                     <div className="sm:text-right">
                       <p className="text-sm text-gray-500 font-semibold uppercase">
                         Order # {order._id}
@@ -144,7 +144,7 @@ const OrderPage = () => {
                     </div>
                   </div>
 
-                  {/* Delivery Status & Info Section */}
+                 
                   <div className="mb-4">
                     {order.status ? (
                       <h2 className="font-semibold text-green-600 text-lg mb-1">
@@ -161,7 +161,7 @@ const OrderPage = () => {
                     </p>
                   </div>
 
-                  {/* Product List */}
+                 
                   <div className="space-y-3 mb-4">
                     {displayedBooks.map((book) => (
                       <div
@@ -197,7 +197,7 @@ const OrderPage = () => {
                     ))}
                   </div>
 
-                  {/* Show if there are more than 3 products */}
+                 
                   {order.productIds.length > 3 && (
                     <p className="text-sm text-gray-500">
                       + {remainingCount} more
@@ -205,7 +205,7 @@ const OrderPage = () => {
                     </p>
                   )}
 
-                  {/* Shipping Address */}
+                
                   <div className="mt-4">
                     <h3 className="font-semibold text-gray-800 mb-2">
                       Shipping Address:

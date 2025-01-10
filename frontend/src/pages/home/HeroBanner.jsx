@@ -17,29 +17,29 @@ import { useNavigate } from 'react-router-dom';
 
 const HeroBanner = () => {
   const images = [image0, image1, image2, image3, image4, image5, image6, image7, image8, image9]; // Array of images
-  const [currentImage, setCurrentImage] = useState(0); // Current image index
+  const [currentImage, setCurrentImage] = useState(0); 
 
   let navigate = useNavigate()
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage(currentImage => (currentImage + 1) % images.length); // Cycle through images
+      setCurrentImage(currentImage => (currentImage + 1) % images.length); 
     }, 8000); // Change image every 5 seconds
 
-    return () => clearInterval(interval); // Cleanup the interval on component unmount
+    return () => clearInterval(interval); 
   }, [images.length]);
 
   const handleClick = () => {
-    navigate('#first-redirect'); // Navigate to a specific part of another route
+    navigate('#first-redirect'); 
   };
 
 
   return (
     <div className="relative">
-      {/* Background image */}
+      
       <img src={images[currentImage]} alt="Best Bookstore Canada" className="w-full h-95 object-cover" />
       
-      {/* Overlay */}
+      
       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white px-4">
         <h1 className="text-5xl font-bold mb-6">Harrenhall Bookstore</h1>
         <p className="text-xl mb-8 max-w-lg">Explore the greatest hits in Fantasy and Speculative Fiction</p>

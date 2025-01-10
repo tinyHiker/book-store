@@ -6,8 +6,7 @@ import Loading from '../../components/Loading';
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import RevenueChart from "./RevenueChart";
 
-//import { HiViewGridAdd } from "react-icons/hi";
-//import { MdOutlineManageHistory } from "react-icons/md";
+
 
 
 import { MdIncompleteCircle } from 'react-icons/md'

@@ -36,9 +36,9 @@ const CheckoutPage = () => {
   const [createOrder, { isLoading }] = useCreateOrderMutation()
   const navigate = useNavigate()
 
-  // Track whether T&C is checked
+
   const [isChecked, setIsChecked] = useState(false)
-  // Track whether user tried to submit without checking T&C
+ 
   const [termsError, setTermsError] = useState(false)
 
   const submitOrder = async (data) => {
@@ -81,7 +81,7 @@ const CheckoutPage = () => {
   }
 
 
-  // Wrap the submission with custom logic to check if T&C is accepted
+
   const handleFormSubmit = (data) => {
     if (!isChecked) {
       setTermsError(true)
@@ -92,7 +92,6 @@ const CheckoutPage = () => {
   }
 
 
-  // Build the cart list display
   let cartList = cartItems.map((item) => {
     const truncatedTitle =
       item.title.length > 22

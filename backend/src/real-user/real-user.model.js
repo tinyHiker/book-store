@@ -14,6 +14,10 @@ const realUserSchema =  new mongoose.Schema({
         type: String,
         required: true
     },
+    profileImage: {
+        type: String,
+        required: false
+    },
     orders: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order',

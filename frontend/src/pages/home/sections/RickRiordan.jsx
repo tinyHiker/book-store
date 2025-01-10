@@ -14,10 +14,10 @@ import { Link } from 'react-router-dom';
 const RickRiordan = () => {
     const { data: books = [] } = useFetchAllBooksQuery();
 
-    // Specify the ObjectId you're looking for
+
     const specificAuthorId = "6771c032474d85e3cecaaeed";
 
-    // Filter books where the first author's ObjectId matches specificAuthorId
+    
     let filteredBooks = books.filter(book => book.authors.length > 0 && book.authors[0] === specificAuthorId);
 
     return (
