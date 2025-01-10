@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/profile",
-          element: <UserProfile />
+          element: <PrivateRoute><UserProfile /></PrivateRoute>
         },
         {
           path:"/quotes",

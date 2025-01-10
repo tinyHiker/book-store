@@ -56,6 +56,7 @@ const CheckoutPage = () => {
         phone: data.phone,
         productIds: cartItems.map((item) => item?._id),
         totalPrice: totalPrice,
+        delivered: false
       }
       
     }
