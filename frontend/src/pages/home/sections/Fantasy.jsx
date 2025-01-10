@@ -23,7 +23,7 @@ const Fantasy = () => {
 
   return (
     <div className="py-10">
-        <h2 className="text-3xl font-semibold mb-7 text-center ">Fantasy</h2>
+        <Link to="categories/fantasy"><h2 className="text-3xl font-semibold mb-7 text-center hover:text-gray-600 hover:scale-95 ">Fantasy</h2></Link>
 
         <Swiper
         slidesPerView={1}
