@@ -3,10 +3,17 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from '../firebase/firebase.config';
 import avatarImg from '../assets/avatar.png';
 import { useGetOrderByEmailQuery } from '../redux/features/orders/ordersApi';
-
+import { useFetchRealUserByUidQuery } from '../redux/features/real-users/realUsersApi';
+import SmallBookDisplay from './SmallBookDisplay';
+import UserProfileCard from './UserProfileCard';
 
 function getMostCommonAddress(orders) {
     const addressCount = {};
+    
+
+    if (orders.length == 0) {
+        return null
+    }
     
     for (const order of orders) {
       
@@ -30,10 +37,14 @@ function getMostCommonAddress(orders) {
       }
     }
   
-    return mostCommon; "
+    return mostCommon; 
   }
   
-  function getMostCommonPhone(orders) {
+function getMostCommonPhone(orders) {
+
+    if (orders.length == 0) {
+        return null
+    }
     const phoneCount = {};
   
     for (const order of orders) {
@@ -56,7 +67,11 @@ function getMostCommonAddress(orders) {
     return mostCommon;
   }
   
-  function getTenMostRecentProducts(orders) {
+function getTenMostRecentProducts(orders) {
+
+    if (orders.length == 0) {
+        return null
+    }
     
     const sortedOrders = [...orders].sort((a, b) => new Date(b.placedAt) - new Date(a.placedAt));
   
@@ -68,104 +83,71 @@ function getMostCommonAddress(orders) {
   
     
     return productsInChronologicalOrder.slice(0, 10);
-  }
+}
   
-  function getTotalMoneySpent(orders) {
+function getTotalMoneySpent(orders) {
+    if (orders.length == 0) {
+        return 0
+    }
     return orders.reduce((sum, order) => sum + order.totalPrice, 0);
   }
 
   
-  const UserProfile = () => {
+const UserProfile = () => {
     const [user, loading, error] = useAuthState(auth);
-  
     if (loading) return <div>Loading user...</div>;
     if (error) return <div>Error loading user.</div>;
     if (!user) return <div>Please log in</div>;
-  
+
+
+
+    const { data: realUser, isLoading2, isError2 } = useFetchRealUserByUidQuery(user.uid);
+    if (isLoading2) {
+        return <div>Loading orders...</div>;
+    }
+    if (isError2) {
+        return <div>Error fetching orders</div>;
+    }
+
+
+
     
+
+
     const {
       data: orders = [],
       isLoading,
       isError,
     } = useGetOrderByEmailQuery(user.email);
-  
     if (isLoading) {
       return <div>Loading orders...</div>;
     }
-  
     if (isError) {
       return <div>Error fetching orders</div>;
     }
   
     
     console.log('Orders:', orders);
-  
-  
+
+    let email = user.email 
+    let user_id = user.uid
+    const username = realUser.name
     const commonAddress = getMostCommonAddress(orders);
-  
-   
     const commonPhone = getMostCommonPhone(orders);
-  
-    
     const recentProducts = getTenMostRecentProducts(orders);
-  
-    
     const totalSpent = getTotalMoneySpent(orders);
+    const userOrders = orders
+
+    
   
+
     return (
-      <div className="p-4">
-        <div className="flex items-center gap-4 mb-6">
-          <img
-            src={avatarImg}
-            alt="Avatar"
-            className="w-12 h-12 rounded-full ring-2 ring-blue-500"
-          />
-          <div>
-            <h2 className="text-xl font-bold">User Profile</h2>
-            <p>Logged in as: {user.email}</p>
-            <p>User ID: {user.uid}</p>
-          </div>
-        </div>
-  
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold">Most Common Address</h3>
-          {commonAddress ? (
-            <p>{commonAddress}</p>
-          ) : (
-            <p className="text-sm text-gray-500">No address found.</p>
-          )}
-        </div>
-  
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold">Most Common Phone</h3>
-          {commonPhone ? (
-            <p>{commonPhone}</p>
-          ) : (
-            <p className="text-sm text-gray-500">No phone number found.</p>
-          )}
-        </div>
-  
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold">10 Most Recent Products</h3>
-          {recentProducts && recentProducts.length > 0 ? (
-            <ul className="list-disc pl-5">
-              {recentProducts.map((product, idx) => (
-                <li key={idx}>
-                  {/* If product is populated, you can access product.title, etc. */}
-                  {product.title} - ${product.newPrice}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-sm text-gray-500">No recent products found.</p>
-          )}
-        </div>
-  
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold">Total Amount Spent</h3>
-          <p>${totalSpent.toFixed(2)}</p>
-        </div>
-      </div>
+        <>
+        <UserProfileCard avatarImg={avatarImg} user={user} commonAddress={commonAddress} commonPhone={commonPhone}  totalSpent={totalSpent}/>
+      <SmallBookDisplay books={recentProducts} title={"Recently Bought"} />
+      
+      
+      </>
     );
   };
   

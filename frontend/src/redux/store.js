@@ -3,6 +3,7 @@ import cartReducer from "./features/cart/cartSlice"
 import booksApi from "./features/books/booksApi"
 import ordersApi from "./features/orders/ordersApi"
 import quotesApi from "./features/quotes/quotesApi"
+import realUsersApi from "./features/real-users/realUsersApi"
 
 
 export const store = configureStore({
@@ -10,8 +11,10 @@ export const store = configureStore({
         cart: cartReducer,
         [booksApi.reducerPath]: booksApi.reducer,
         [ordersApi.reducerPath]: ordersApi.reducer,
-        [quotesApi.reducerPath]: quotesApi.reducer
+        [quotesApi.reducerPath]: quotesApi.reducer,
+        [realUsersApi.reducerPath]: realUsersApi.reducer
+
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(booksApi.middleware, ordersApi.middleware, quotesApi.middleware)
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(booksApi.middleware, ordersApi.middleware, quotesApi.middleware, realUsersApi.middleware)
     
 })
