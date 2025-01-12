@@ -5,6 +5,7 @@ import applePayLogo from "../../public/payment-icons/apple-pay.svg"
 import discoverLogo from "../../public/payment-icons/discover.svg"
 import mastercardLogo from "../../public/payment-icons/mastercard.svg"
 import visaLogo from "../../public/payment-icons/visa.svg"
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -23,36 +24,16 @@ const Footer = () => {
           </div>
           <ul className="flex flex-col md:flex-row gap-4 text-sm lg:text-base justify-center md:justify-start">
             <li>
-              <a
-                href="#home"
-                className="transition-colors duration-300 hover:text-primary"
-              >
-                Home
-              </a>
+              <Link to="/" className="transition-colors duration-300 hover:text-primary">Home</Link>
+              
             </li>
+           
             <li>
-              <a
-                href="#services"
-                className="transition-colors duration-300 hover:text-primary"
-              >
-                Services
-              </a>
+              <Link to="/about" className="transition-colors duration-300 hover:text-primary">About Us</Link>
             </li>
+
             <li>
-              <a
-                href="#about"
-                className="transition-colors duration-300 hover:text-primary"
-              >
-                About Us
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                className="transition-colors duration-300 hover:text-primary"
-              >
-                Contact
-              </a>
+            <Link to="/contact" className="transition-colors duration-300 hover:text-primary">Contact</Link>
             </li>
           </ul>
         </div>

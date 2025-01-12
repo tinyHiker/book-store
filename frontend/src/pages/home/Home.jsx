@@ -2,7 +2,6 @@ import React from 'react'
 import Banner from './Banner'
 import TopSellers from './TopSellers'
 import Recommended from './Recommended'
-import News from './News'
 import Fantasy from './sections/Fantasy'
 import Superhero from './sections/Superhero'
 import IceAndFire from './sections/IceAndFire'
@@ -45,7 +44,7 @@ const Home = () => {
     <CategoriesGrid />
     <RickRiordan />
     <Quote quote={quote2}/>
-    <News/>
+ 
 
     </>
   )

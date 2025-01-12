@@ -5,17 +5,16 @@ import img3 from "../../assets/about/IMG3.jpg";
 import img4 from "../../assets/about/IMG4.jpg";
 
 import { FaEnvelope, FaPhone, FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom"; // If using React Router for navigation
+import { Link } from "react-router-dom"; 
 
 const About = () => {
-  // State to show/hide the FAQ section
+  
   const [showFAQ, setShowFAQ] = useState(false);
 
-  // State to track which question is open
-  // If `openQuestion` matches the index, that question’s answer will show
+  
   const [openQuestion, setOpenQuestion] = useState(null);
 
-  // Our FAQ data
+  
   const faqs = [
     {
       question: "1. What is your return policy?",
@@ -44,7 +43,7 @@ const About = () => {
     },
   ];
 
-  // Function to toggle a specific FAQ answer
+  
   const handleToggle = (index) => {
     if (openQuestion === index) {
       setOpenQuestion(null);
@@ -55,7 +54,7 @@ const About = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
-      {/* Image Row */}
+    
       <div className="flex justify-center gap-6 mb-8">
         <img
           src={img1}
@@ -79,14 +78,14 @@ const About = () => {
         />
       </div>
 
-      {/* Intro Text */}
+      
       <h2 className="text-2xl font-bold text-center mb-3">Hey, I'm Taha!</h2>
       <p className="text-center mb-6">
         I developed Tyrell bookstore. I put a lot of my favorite books in here:
         A Game of Thrones, Percy Jackson, Dune, etc.
       </p>
 
-      {/* Contact Info */}
+    
       <div className="flex flex-col items-center space-y-3 mb-6">
         <a
           href="mailto:t4iqbal@torontomu.ca"
@@ -112,9 +111,9 @@ const About = () => {
         </a>
       </div>
 
-      {/* Buttons */}
+     
       <div className="flex justify-center gap-4 mb-6">
-        {/* Button to navigate to Contact Me page */}
+        
         <Link
           to="/contact"
           className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
@@ -122,7 +121,7 @@ const About = () => {
           Contact Me
         </Link>
 
-        {/* Button to toggle FAQ */}
+        
         <button
           onClick={() => setShowFAQ(!showFAQ)}
           className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
@@ -131,7 +130,7 @@ const About = () => {
         </button>
       </div>
 
-      {/* FAQ Section */}
+      
       {showFAQ && (
         <div className="border border-gray-300 rounded-lg p-4 bg-gray-50">
           <h3 className="text-xl font-semibold mb-4">Frequently Asked Questions</h3>

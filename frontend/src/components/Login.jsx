@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle, FaUserCircle } from "react-icons/fa"
 import { useForm } from "react-hook-form"
 import { useAuth } from '../context/AuthContext'
+import Swal from "sweetalert2"
 
 const Login = () => {
   const [message, setMessage] = useState("")
@@ -29,10 +30,27 @@ const Login = () => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle()
-      alert("Login successful with Google!")
+      Swal.fire({
+        icon: 'success',
+        title: 'Login was successful',
+        text: 'Welcome back! You are now logged in.',
+        width: '600px',
+        background: '#f8fafc',
+        timer: 2000, 
+        showConfirmButton: false, 
+      });
       navigate("/")
     } catch (error) {
-      alert("Google sign in failed!")
+      Swal.fire({
+        icon: 'error',
+        title: 'Login unsuccessful',
+        text: 'Your login failed. Please double check the credentials that you entered.',
+        width: '600px',
+        background: '#f8fafc',
+        timer: 2000, 
+        showConfirmButton: false, 
+      });
+      
       console.error(error)
     }
   }

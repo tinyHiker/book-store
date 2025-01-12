@@ -78,6 +78,15 @@ const OrderPage = () => {
           Your Order History
         </h1>
         <hr class="h-1 bg-black my-8"></hr>
+        <button
+          className="px-6 py-2 text-white font-semibold bg-blue-500 hover:bg-blue-600 rounded-md shadow transition-colors duration-200"
+          onClick={() => {
+            navigate("/")
+            
+          }}
+        >
+          Continue Shopping
+        </button>
 
         {orders.length === 0 ? (
           <div className="bg-white shadow-lg rounded-2xl p-6 text-center">

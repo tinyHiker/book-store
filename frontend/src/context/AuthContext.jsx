@@ -3,6 +3,7 @@ import {auth} from "../firebase/firebase.config"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
 import {useEffect} from "react"
 import getBaseUrl from "../utils/baseURL";
+import Swal from "sweetalert2";
 
 const AuthContext = createContext();
 export const useAuth = () => {
@@ -74,6 +75,7 @@ export const AuthProvide = ({children}) => {
 
     const logout = () => {
         return signOut(auth)
+        
     }
 
     useEffect(() => {

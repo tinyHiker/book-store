@@ -20,6 +20,10 @@ import UserProfile from "../components/UserProfile";
 import GenreCollection from "../pages/genres/GenreCollection";
 import Collection from "../pages/genres/Collection";
 import About from "../pages/about/About";
+import Contact from "../pages/about/Contact";
+import NotFound from "../pages/not-found/NotFound";
+import FourOFour from "../pages/not-found/FourOFour";
+import SubscribeSuccess from "../pages/success/SubscribeSuccess";
 
 
 const router = createBrowserRouter([
@@ -66,7 +70,20 @@ const router = createBrowserRouter([
           path: "/profile",
           element: <PrivateRoute><UserProfile /></PrivateRoute>
         },
-       
+        {
+          path: "/contact",
+          element: <Contact />
+        },
+        {
+          path: "/404",
+          element: <FourOFour />
+
+        },
+        {
+          path: "/subscribe-success",
+          element: <SubscribeSuccess />
+        }
+        
 
         
 
@@ -116,6 +133,10 @@ const router = createBrowserRouter([
         }
 
       ]
+    },
+    {
+      path: "*",
+      element: <NotFound />
     }
   ]);
 
