@@ -101,10 +101,7 @@ const router = createBrowserRouter([
           path: "none",
           element: <Collection />
         },
-        {
-          path: "authors/:id",
-          element: <div>AUTHOR COLLECTION</div>
-        },
+        
         {
             path: ":genre",
             element: <GenreCollection />

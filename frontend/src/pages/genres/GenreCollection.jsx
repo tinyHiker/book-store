@@ -23,6 +23,11 @@ const GenreCollection = () => {
 
   console.log(genre)
 
+  if (filteredBooks.length == 0) {
+    navigate("/404")
+
+  } 
+
   
 
   return (
