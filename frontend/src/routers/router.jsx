@@ -16,9 +16,11 @@ import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks";
 import AddBook from "../pages/dashboard/addBook/AddBook";
 import UpdateBook from "../pages/dashboard/EditBook/UpdateBook";
 import UserProfile from "../components/UserProfile";
-import AllQuotes from "../pages/other/AllQuotes";
+
 import GenreCollection from "../pages/genres/GenreCollection";
 import Collection from "../pages/genres/Collection";
+import About from "../pages/about/About";
+
 
 const router = createBrowserRouter([
     {
@@ -37,7 +39,7 @@ const router = createBrowserRouter([
         
         {
             path: "/about",
-            element: 
+            element: <About />
         },
         {
           path: "/login",
@@ -64,10 +66,9 @@ const router = createBrowserRouter([
           path: "/profile",
           element: <PrivateRoute><UserProfile /></PrivateRoute>
         },
-        {
-          path:"/quotes",
-          element: <AllQuotes />
-        }
+       
+
+        
 
       ]
     },

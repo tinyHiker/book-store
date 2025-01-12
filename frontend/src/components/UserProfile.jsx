@@ -109,6 +109,9 @@ const UserProfile = () => {
         return <div>Error fetching orders</div>;
     }
 
+    console.log("REAL USER")
+    console.log(realUser)
+
 
 
     
@@ -143,8 +146,9 @@ const UserProfile = () => {
 
     return (
         <>
-        <UserProfileCard avatarImg={avatarImg} user={user} commonAddress={commonAddress} commonPhone={commonPhone}  totalSpent={totalSpent}/>
-      <SmallBookDisplay books={recentProducts} title={"Recently Bought"} />
+        <UserProfileCard avatarImg={avatarImg} user={user} realUser={realUser} commonAddress={commonAddress} commonPhone={commonPhone}  totalSpent={totalSpent}/>
+        
+      {recentProducts.length > 0 ? <SmallBookDisplay books={recentProducts} title={"Recently Bought"} /> : <div></div>}
       
       
       </>

@@ -21,7 +21,7 @@ const SmallBookDisplay = ({books, title}) => {
 
   return (
     <div className="py-10">
-        <h2 className="text-3xl font-semibold mb-7 text-center ">{title}</h2>
+        <h2 className="text-3xl font-semibold mb-7 text-center text-blue-600">{title}</h2>
 
         <Swiper
         slidesPerView={5}
