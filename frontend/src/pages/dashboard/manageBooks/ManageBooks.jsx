@@ -16,7 +16,6 @@ const ManageBooks = () => {
             await deleteBook(id).unwrap();
             alert('Book deleted successfully!');
             refetch();
-
         } catch (error) {
             console.error('Failed to delete book:', error.message);
             alert('Failed to delete book. Please try again.');
@@ -27,6 +26,7 @@ const ManageBooks = () => {
     const handleEditClick = (id) => {
         navigate(`dashboard/edit-book/${id}`);
     };
+
   return (
     <section className="py-1 bg-blueGray-50">
     <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
