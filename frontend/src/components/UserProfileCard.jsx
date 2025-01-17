@@ -22,7 +22,7 @@ const UserProfileCard = ({
             className="w-40 h-40 rounded-full ring-4 ring-blue-500 object-cover mb-2"
           />
           {/* User Name */}
-          <h2 className="text-2xl font-bold mt-4 mr-2 text-blue-600">{realUser.name}</h2>
+          <h2 className="text-2xl font-bold mt-4 mr-2 text-blue-600">{realUser?.name}</h2>
         </div>
 
         {/* -- Right (Detailed Info including Email and User ID) -- */}
@@ -33,7 +33,7 @@ const UserProfileCard = ({
               <HiOutlineMail className="mr-2 text-xl" />
               <h3 className="font-semibold">Email</h3>
             </div>
-            <p className="text-gray-700 ml-7">{user.email}</p>
+            <p className="text-gray-700 ml-7">{user?.email}</p>
           </div>
 
           {/* User ID Section */}
@@ -42,7 +42,7 @@ const UserProfileCard = ({
               <HiOutlineIdentification className="mr-2 text-xl" />
               <h3 className="font-semibold">User ID</h3>
             </div>
-            <p className="text-gray-700 ml-7">{user.uid}</p>
+            <p className="text-gray-700 ml-7">{user?.uid}</p>
           </div>
 
          
@@ -68,7 +68,7 @@ const UserProfileCard = ({
               <h3 className="font-semibold">Username</h3>
             </div>
             <p className="text-gray-700 ml-7">
-              {realUser.name}
+              {realUser?.name}
             </p>
           </div>
 
