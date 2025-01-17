@@ -6,7 +6,7 @@
 
 ## Watch the Demo Video Or Visit the Site Link
 
-To see the demo video, click below:
+To see the demo video, click the image:
 
 [![Watch the Video](THUMBNAIL.png)](https://www.youtube.com/watch?v=Kz64tc0Pe0A)
 
