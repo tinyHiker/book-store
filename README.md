@@ -6,7 +6,7 @@
 
 ## Click the image to see the demo video (or visit the site link)
 
-[Site Link](https://tyrell-deployment-b1i7brw7b-taha-iqbals-projects.vercel.app/)
+[Site Link](https://tyrell-deployment.vercel.app/)
 
 [![Watch the Video](THUMBNAIL.png)](https://www.youtube.com/watch?v=Kz64tc0Pe0A)
 
